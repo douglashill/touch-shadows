@@ -71,14 +71,15 @@
         UITouch *const bestTouch = [[event predictedTouchesForTouch:touch] lastObject] ?: touch;
 
         [shadow setOpacity:([bestTouch maximumPossibleForce] > 0) ? [bestTouch force] / [bestTouch maximumPossibleForce] : 0.5];
+        [shadow setOpacity:0.6];
         [shadow setPosition:[bestTouch preciseLocationInView:self]];
 
 #define MOCK_STYLUS 0
         BOOL const isStylusTouch = [bestTouch type] == UITouchTypeStylus || MOCK_STYLUS;
 
         if (isStylusTouch) {
-            static CGFloat const stylusThickness = 45;
-            static CGFloat const stylusLength = 450;
+            static CGFloat const stylusThickness = 40;
+            static CGFloat const stylusLength = 850;
 
             CGFloat const azimthAngle = MOCK_STYLUS ? M_PI_4 : [bestTouch azimuthAngleInView:self];
             CGFloat  const altitudeAngle = MOCK_STYLUS ? M_PI_4 : [bestTouch altitudeAngle];
